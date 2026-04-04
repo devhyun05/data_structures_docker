@@ -9,6 +9,7 @@ Purpose: Implementing the required functions for Question 1 */
 #include <stdio.h>
 #include <stdlib.h>
 
+
 //////////////////////////////////////////////////////////////////////////////////
 
 typedef struct _listnode{
@@ -34,7 +35,7 @@ int insertNode(LinkedList *ll, int index, int value);
 int removeNode(LinkedList *ll, int index);
 
 
-//////////////////////////// main() //////////////////////////////////////////////
+//////////////////////////// main() ////////////////////////////////// ////////////
 
 int main()
 {
@@ -91,6 +92,52 @@ int main()
 int insertSortedLL(LinkedList *ll, int item)
 {
 	/* add your code here */
+	ListNode *cur; 
+	
+	cur = ll->head; 
+	int nodeIndex = 1; 
+	int numFound = 1; 
+
+	if (ll->head == NULL) 
+	{
+		insertNode(ll, nodeIndex, item); 		
+	} 
+	else 
+	{
+		while (cur->next != NULL) 
+		{				
+			cur = cur->next; 
+			if (cur->item <= item) {
+				nodeIndex++; 
+			}
+			if (cur->item == item) {
+				numFound = 0;
+			}
+		}
+
+		if (numFound != 0)
+		{
+
+			if (cur->item > item) 
+			{
+				insertNode(ll, nodeIndex-1, item);
+			}
+			else
+			{
+				insertNode(ll, nodeIndex, item);		
+			}
+
+		}	
+	}
+
+	if (numFound == 1) 
+	{
+		return nodeIndex; 
+	}
+	else
+	{
+		return -1; 
+	}
 }
 
 ///////////////////////////////////////////////////////////////////////////////////

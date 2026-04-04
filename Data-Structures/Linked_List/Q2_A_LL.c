@@ -119,7 +119,6 @@ void alternateMergeLinkedList(LinkedList *ll1, LinkedList *ll2)
 		if (cur2 != NULL)
 		{
 			ListNode *temp = cur2;
-			printf("cur2_item: %d\n", cur2->item); 
 			cur2 = cur2->next; 
 			removeNode(ll2, cur2_index); 										
 		}			

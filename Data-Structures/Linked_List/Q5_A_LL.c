@@ -103,6 +103,38 @@ int main()
 void frontBackSplitLinkedList(LinkedList *ll, LinkedList *resultFrontList, LinkedList *resultBackList)
 {
 	/* add your code here */
+	ListNode *cur = ll->head; 
+	int size = ll->size; 
+	int count = size / 2;
+
+	// 프론트 찾기 
+	while (count > 0) 
+	{		
+		cur = cur->next; 
+		count--; 
+	}
+
+	resultBackList->head = cur->next; 
+	cur->next = NULL;
+	resultFrontList->head = ll->head; 
+
+	cur = resultFrontList->head; 
+
+	while (cur != NULL)
+	{
+		printf("%d", cur->item);
+		cur = cur->next; 
+	}
+
+	cur = resultBackList->head; 
+
+	while (cur != NULL)
+	{
+		printf("%d", cur->item);
+		cur = cur->next; 
+	}
+	
+	
 }
 
 ///////////////////////////////////////////////////////////////////////////////////

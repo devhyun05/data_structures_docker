@@ -111,7 +111,30 @@ int main()
 
 void removeUntil(Stack *s, int value)
 {
-/* add your code here */
+	/* add your code here */
+	// 노드가 한개인 경우를 대비 
+	if (s->ll.size == 1)
+	{
+		if (s->ll.head->item != value)
+		{
+			pop(s);
+		}
+	}
+	else 
+	{
+		ListNode *cur = s->ll.head; 
+		for (int i = 0; i < s->ll.size; i++)
+		{
+			cur = cur->next; 
+			int curNum = pop(s); 
+
+			if (cur->item == value)
+			{
+				break;
+			}
+		} 
+	}
+
 }
 
 //////////////////////////////////////////////////////////////////////////////////

@@ -102,8 +102,29 @@ int main()
 /////////////////////////////////////////////////////////////////////////////////
 
 int isStackPairwiseConsecutive(Stack *s)
-{
-  /* add your code here */
+{	
+	/* add your code here */
+
+	// 만약에 홀수라면 실패 
+	if ((s->ll.size) % 2 != 0)
+	{
+		return 0; 
+	}
+	else 
+	{
+		ListNode *cur = s->ll.head; 
+
+		while (cur != NULL)
+		{
+			if ((cur->item - cur->next->item) != 1) 
+			{
+				return 0; 
+			}
+			cur = cur->next->next;  
+		}
+	}
+
+	return 1; 
 }
 
 //////////////////////////////////////////////////////////////////////////////////

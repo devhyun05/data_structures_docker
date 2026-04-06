@@ -93,11 +93,23 @@ int main()
 }
 
 //////////////////////////////////////////////////////////////////////////////////
+// 최댓값을 구하기 위한 헬퍼 함수 
+int max(int a, int b)
+{
+    return (a > b) ? a : b; 
+}
 
 int maxHeight(BTNode *node)
-
 {
-    /* add your code here */
+    /* add your code here */    
+    if (node == NULL)
+    {
+        return -1; 
+    }
+    else 
+    {        
+        return max(maxHeight(node->left) + 1, maxHeight(node->right) + 1); 
+    }
 }
 
 ///////////////////////////////////////////////////////////////////////////////////

@@ -8,6 +8,7 @@ Purpose: Implementing the required functions for Question 7 */
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h> 
 
 //////////////////////////////////////////////////////////////////////////////////
 
@@ -99,10 +100,22 @@ int main()
 }
 
 //////////////////////////////////////////////////////////////////////////////////
+// 최댓값을 구하기 위한 헬퍼 함수 
+int min(int a, int b)
+{
+    return (a < b) ? a : b; 
+}
 
 int smallestValue(BTNode *node)
 {
 	/* add your code here */
+    if (node == NULL)
+    {
+        return INT_MAX;  
+    }
+    int leftMin = min(node->item, smallestValue(node->left)); 
+    int rightMin = min(node->item, smallestValue(node->right)); 
+    return min(leftMin, rightMin); 
 }
 
 //////////////////////////////////////////////////////////////////////////////////

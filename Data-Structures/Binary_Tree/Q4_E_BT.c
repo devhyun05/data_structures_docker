@@ -104,6 +104,20 @@ int sumOfOddNodes(BTNode *node)
 
 {
     /* add your code here */
+    if (node == NULL)
+    {
+        return 0; 
+    }
+
+    int current = 0; 
+
+    if (node->item % 2 != 0)
+    {
+        current = node->item; 
+    }
+
+    return current + sumOfOddNodes(node->left) + sumOfOddNodes(node->right); 
+    
 }
 
 //////////////////////////////////////////////////////////////////////////////////

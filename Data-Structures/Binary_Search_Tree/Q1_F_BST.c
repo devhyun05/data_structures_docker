@@ -22,14 +22,14 @@ typedef struct _bstnode{
 typedef struct _QueueNode {
 	BSTNode *data;
 	struct _QueueNode *nextPtr;
-}QueueNode; // You should not change the definition of QueueNode
+} QueueNode; // You should not change the definition of QueueNode
 
 
 typedef struct _queue
 {
 	QueueNode *head;
 	QueueNode *tail;
-}Queue; // You should not change the definition of queue
+} Queue; // You should not change the definition of queue
 
 ///////////////////////////////////////////////////////////////////////////////////
 
@@ -92,9 +92,34 @@ int main()
 //////////////////////////////////////////////////////////////////////////////////
 
 void levelOrderTraversal(BSTNode* root)
-{
-
+{	
     /* add your code here */
+	
+	// 1. queue를 initialize한다 (첫 번째 요소 추가)
+	Queue queue;
+	queue.head = NULL; 
+	queue.tail = NULL; 
+
+	enqueue(&(queue.head), &(queue.tail), root);  
+	
+	while (queue.head != NULL)
+	{
+		BSTNode *curr = dequeue(&(queue.head), &(queue.tail));
+		printf("%d ", curr->item); 
+		if (curr->left != NULL)
+		{
+			enqueue(&(queue.head), &(queue.tail), curr->left); 
+		}
+		if (curr->right != NULL)
+		{
+			enqueue(&(queue.head), &(queue.tail), curr->right); 
+		}
+	}
+	// 2. queue에 요소가 더 이상 남지 않을때까지 while문을 수행한다 
+		// 2.1 queue에서 요소를 반복문들 돌면서 팝하고, 출력 후 순서대로 왼쪽 오른쪽을 확인하면서 큐에 추가한다 
+	
+		
+		
 }
 
 ///////////////////////////////////////////////////////////////////////////////

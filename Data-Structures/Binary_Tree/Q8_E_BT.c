@@ -102,7 +102,22 @@ int main()
 
 int hasGreatGrandchild(BTNode *node)
 {
-	/* add your code here */
+    if (node == NULL)
+        return -1;   
+
+    int leftDepth = hasGreatGrandchild(node->left);
+    int rightDepth = hasGreatGrandchild(node->right);
+
+    int depth;
+    if (leftDepth > rightDepth)
+        depth = leftDepth + 1;
+    else
+        depth = rightDepth + 1;
+
+    if (depth >= 3)
+        printf("%d ", node->item);
+
+    return depth;
 }
 
 //////////////////////////////////////////////////////////////////////////////////
